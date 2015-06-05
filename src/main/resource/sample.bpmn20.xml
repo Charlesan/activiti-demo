@@ -1,43 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions id="definitions" targetNamespace="http://activiti.org/bpmn20"
-	xmlns:activiti="http://activiti.org/bpmn" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL">
-
-	<process id="financialReport" name="Monthly financial report reminder process">
-
-		<startEvent id="theStart" />
-
-		<sequenceFlow id='flow1' sourceRef='theStart' targetRef='writeReportTask' />
-
-		<userTask id="writeReportTask" name="Write monthly financial report">
-			<documentation>
-				Write monthly financial report for publication to
-				shareholders.
-			</documentation>
-<!-- 			<extensionElements>
-				<activiti:taskListener event="create"
-					class="com.gf.fin.listener.TaskCreationListener" />
-			</extensionElements> -->
-		</userTask>
-
-		<sequenceFlow id='flow2' sourceRef='writeReportTask'
-			targetRef='verifyReportTask' />
-
-		<userTask id="verifyReportTask" name="Verify monthly financial report">
-			<documentation>
-				Verify monthly financial report composed by the
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://activiti.org/bpmn20" id="definitions">
+  <process id="financialReport" name="Monthly financial report reminder process" isExecutable="true">
+    <startEvent id="theStart"></startEvent>
+    <sequenceFlow id="flow1" sourceRef="theStart" targetRef="writeReportTask"></sequenceFlow>
+    <userTask id="writeReportTask" name="Write monthly financial report">
+      <documentation>Write monthly financial report for publication to
+				shareholders.</documentation>
+    </userTask>
+    <sequenceFlow id="flow2" sourceRef="writeReportTask" targetRef="verifyReportTask1"></sequenceFlow>
+    <userTask id="verifyReportTask1" name="Verify monthly financial report 1">
+      <documentation>Verify monthly financial report composed by the
 				accountancy department.
 				This financial report is going to be sent to
 				all the company
-				shareholders.
-			</documentation>
-<!-- 			<extensionElements> -->
-<!-- 				<activiti:taskListener event="complete" -->
-<!-- 					class="com.gf.fin.listener.TaskCompletionListener" /> -->
-<!-- 			</extensionElements> -->
-		</userTask>
-
-		<sequenceFlow id='flow3' sourceRef='verifyReportTask'
-			targetRef='theEnd' />
-		<endEvent id="theEnd" />
-	</process>
+				shareholders.</documentation>
+    </userTask>
+    <sequenceFlow id="flow3" sourceRef="verifyReportTask1" targetRef="verifyReportTask2"></sequenceFlow>
+    <userTask id="verifyReportTask2" name="Verify monthly financial report 2">
+      <documentation>Verify monthly financial report composed by the
+				accountancy department.
+				This financial report is going to be sent to
+				all the company
+				shareholders.</documentation>
+    </userTask>
+    <sequenceFlow id="flow4" sourceRef="verifyReportTask2" targetRef="theEnd"></sequenceFlow>
+    <endEvent id="theEnd"></endEvent>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_financialReport">
+    <bpmndi:BPMNPlane bpmnElement="financialReport" id="BPMNPlane_financialReport">
+      <bpmndi:BPMNShape bpmnElement="theStart" id="BPMNShape_theStart">
+        <omgdc:Bounds height="35.0" width="35.0" x="0.0" y="15.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="writeReportTask" id="BPMNShape_writeReportTask">
+        <omgdc:Bounds height="60.0" width="100.0" x="80.0" y="0.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="verifyReportTask1" id="BPMNShape_verifyReportTask1">
+        <omgdc:Bounds height="60.0" width="100.0" x="230.0" y="0.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="verifyReportTask2" id="BPMNShape_verifyReportTask2">
+        <omgdc:Bounds height="60.0" width="100.0" x="380.0" y="0.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="theEnd" id="BPMNShape_theEnd">
+        <omgdc:Bounds height="35.0" width="35.0" x="530.0" y="15.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="35.0" y="32.0"></omgdi:waypoint>
+        <omgdi:waypoint x="42.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="42.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="80.0" y="30.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="180.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="192.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="230.0" y="30.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="330.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="342.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="342.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="380.0" y="30.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="480.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="492.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="492.0" y="30.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="32.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
 </definitions>
